@@ -23,19 +23,6 @@ for file in files:
 		else:
 			tmp += i
 	extension = tmp[-1::-1]
-	if extension in extensions["pdf"]:
-		shutil.move(path+"/"+file, path+"/pdf")
-	elif extension in extensions["images"]:
-		shutil.move(path+"/"+file, path+"/images")
-	elif extension in extensions["videos"]:
-		shutil.move(path+"/"+file, path+"/videos")
-	elif extension in extensions["docs"]:
-		shutil.move(path+"/"+file, path+"/docs")
-	elif extension in extensions["exe"]:
-		shutil.move(path+"/"+file, path+"/exe")
-	elif extension in extensions["prog"]:
-		shutil.move(path+"/"+file, path+"/prog")
-	elif extension in extensions["zips"]:
-		shutil.move(path+"/"+file, path+"/zips")
-	else:
-		shutil.move(path+"/"+file, path+"/other")	
+	for xt in extensions.keys():
+		if extension in extensions[xt]:
+			shutil.move(path+"/"+file, path+f'/{xt}')
